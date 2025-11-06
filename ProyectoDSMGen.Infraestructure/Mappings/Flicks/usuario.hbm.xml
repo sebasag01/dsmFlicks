@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProyectoDSMGen.Infraestructure"
+		                   namespace="ProyectoDSMGen.Infraestructure.EN.Flicks">
+		    
+		    
+			
+				<class name="UsuarioNH" table="Usuario"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Email" type="string"> 
+						<column name="email"  not-null="true"/>
+					</property>
+					<property name="FotoPerfil" type="string"> 
+						<column name="fotoPerfil"  not-null="true"/>
+					</property>
+					<property name="Biografia" type="string"> 
+						<column name="biografia"  not-null="true"/>
+					</property>
+					<property name="ModoBlancoYNegro" type="boolean"> 
+						<column name="modoBlancoYNegro"  not-null="true"/>
+					</property>
+					<property name="Pass" type="string"> 
+						<column name="pass"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Lista" table="[lista_usuario]" inverse="true" >
+							<key>
+								
+									<column name="FK_id_idUsuario"/> 
+							</key>
+      						<many-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.ListaNH">
+									<column name="FK_idLista_idLista"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Reporte" >
+							<key>
+							
+								
+								<column name="FK_id_idUsuario"/>
+					      	</key>
+							<one-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.ReporteNH"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Notificacion" >
+							<key>
+							
+								
+								<column name="FK_id_idUsuario"/>
+					      	</key>
+							<one-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.NotificacionNH"/>
+					    </bag>
+					
+			
+		  			
+						<many-to-one name="Metrica" class="ProyectoDSMGen.Infraestructure.EN.Flicks.MetricaNH" >	
+								<column name="FK_idMetrica_idMetrica"/> 
+						</many-to-one>
+											 					
+			
+			
+		  			
+						<bag name="Resenya" >
+							<key>
+							
+								
+								<column name="FK_id_idUsuario"/>
+					      	</key>
+							<one-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.ResenyaNH"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioNHReadAllHQL">from UsuarioNH</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProyectoDSMGen.Infraestructure"
+		                   namespace="ProyectoDSMGen.Infraestructure.EN.Flicks">
+		    
+		    
+			
+				<class name="ReporteNH" table="Reporte"> 
+				  	
+						<id name="Id" column="idReporte" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Motivo" type="string"> 
+						<column name="motivo"  not-null="true"/>
+					</property>
+					<property name="Estado" > 
+						<column name="estado"  not-null="true"/>
+					</property>
+					<property name="Fecha" type="string"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="ProyectoDSMGen.Infraestructure.EN.Flicks.UsuarioNH" >	
+								<column name="FK_id_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Resenya" >
+							<key>
+							
+								
+								<column name="FK_idReporte_idReporte"/>
+					      	</key>
+							<one-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.ResenyaNH"/>
+					    </bag>
+					
+			
+		  			
+						<many-to-one name="Administrador" class="ProyectoDSMGen.Infraestructure.EN.Flicks.AdministradorNH" >	
+								<column name="FK_id_idAdministrador"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ReporteNHReadAllHQL">from ReporteNH</query>
+		  <query name="ReporteNHreadFilterEstadoHQL"><![CDATA[FROM ReporteNH as r WHERE r.Estado = :p_estado]]></query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProyectoDSMGen.Infraestructure"
+		                   namespace="ProyectoDSMGen.Infraestructure.EN.Flicks">
+		    
+		    
+			
+				<class name="ResenyaNH" table="Resenya"> 
+				  	
+						<id name="Id" column="idResenya" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Puntuacion" type="integer"> 
+						<column name="puntuacion"  not-null="true"/>
+					</property>
+					<property name="Comentario" type="string"> 
+						<column name="comentario"  not-null="true"/>
+					</property>
+					<property name="Fecha" type="date"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Pelicula" class="ProyectoDSMGen.Infraestructure.EN.Flicks.PeliculaNH" >	
+								<column name="FK_idPelicula_idPelicula"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Reporte" class="ProyectoDSMGen.Infraestructure.EN.Flicks.ReporteNH" >	
+								<column name="FK_idReporte_idReporte"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Usuario" class="ProyectoDSMGen.Infraestructure.EN.Flicks.UsuarioNH" >	
+								<column name="FK_id_idUsuario"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ResenyaNHReadAllHQL">from ResenyaNH</query>
+		  <query name="ResenyaNHreadFilterByUsuarioHQL"><![CDATA[FROM ResenyaNH r WHERE r.Usuario.Id = :idUsuario]]></query>
+		  <query name="ResenyaNHreadFIlterValoracionHQL"><![CDATA[FROM ResenyaNH r WHERE r.Puntuacion = :puntuacion]]></query>
+		  <query name="ResenyaNHreadFilterByPeliculaHQL"><![CDATA[FROM ResenyaNH r WHERE r.pelicula.id = :idPelicula]]></query>
+		</hibernate-mapping>
+	

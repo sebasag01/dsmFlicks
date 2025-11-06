@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProyectoDSMGen.Infraestructure"
+		                   namespace="ProyectoDSMGen.Infraestructure.EN.Flicks">
+		    
+		    
+			
+				<class name="MetricaNH" table="Metrica"> 
+				  	
+						<id name="Id" column="idMetrica" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Estadisticas" type="string"> 
+						<column name="estadisticas"  not-null="true"/>
+					</property>
+					<property name="Fecha" type="date"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Usuario" >
+							<key>
+							
+								
+								<column name="FK_idMetrica_idMetrica"/>
+					      	</key>
+							<one-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.UsuarioNH"/>
+					    </bag>
+					
+			
+			
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="MetricaNHReadAllHQL">from MetricaNH</query>
+		</hibernate-mapping>
+	

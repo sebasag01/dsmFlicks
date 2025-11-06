@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProyectoDSMGen.Infraestructure"
+		                   namespace="ProyectoDSMGen.Infraestructure.EN.Flicks">
+		    
+		    
+			
+				<class name="PeliculaNH" table="Pelicula"> 
+				  	
+						<id name="Id" column="idPelicula" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Titulo" type="string"> 
+						<column name="titulo"  not-null="true"/>
+					</property>
+					<property name="TituloOriginal" type="string"> 
+						<column name="tituloOriginal"  not-null="true"/>
+					</property>
+					<property name="Anyo" type="integer"> 
+						<column name="anyo"  not-null="true"/>
+					</property>
+					<property name="Duracion" type="integer"> 
+						<column name="duracion"  not-null="true"/>
+					</property>
+					<property name="Pais" type="string"> 
+						<column name="pais"  not-null="true"/>
+					</property>
+					<property name="Director" type="string"> 
+						<column name="director"  not-null="true"/>
+					</property>
+					<property name="Genero" type="string"> 
+						<column name="genero"  not-null="true"/>
+					</property>
+					<property name="Sinopsis" type="string"> 
+						<column name="sinopsis"  not-null="true"/>
+					</property>
+					<property name="ValoracionMedia" type="float"> 
+						<column name="valoracionMedia"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Lista" table="[pelicula_lista]"  >
+							<key>
+								
+									<column name="FK_idPelicula_idPelicula"/> 
+							</key>
+      						<many-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.ListaNH">
+									<column name="FK_idLista_idLista"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<many-to-one name="Administrador" class="ProyectoDSMGen.Infraestructure.EN.Flicks.AdministradorNH" >	
+								<column name="FK_id_idAdministrador"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Resenya" >
+							<key>
+							
+								
+								<column name="FK_idPelicula_idPelicula"/>
+					      	</key>
+							<one-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.ResenyaNH"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PeliculaNHReadAllHQL">from PeliculaNH</query>
+		  <query name="PeliculaNHreadFilterGeneroHQL"><![CDATA[FROM PeliculaNH as p WHERE p.Genero =:p_genero]]></query>
+		  <query name="PeliculaNHreadFilterValoracionHQL"><![CDATA[FROM PeliculaNHas p WHERE p.ValoraciónMedia >= :p_valor]]></query>
+		  <query name="PeliculaNHreadFIlterAnyoHQL"><![CDATA[FROM PeliculaNH as p WHERE p.Año = :p_año]]></query>
+		  <query name="PeliculaNHreadFilterTituloHQL"><![CDATA[FROM PeliculaNHas p WHERE lower(p.Título) like lower(:p_titulo)]]></query>
+		</hibernate-mapping>
+	

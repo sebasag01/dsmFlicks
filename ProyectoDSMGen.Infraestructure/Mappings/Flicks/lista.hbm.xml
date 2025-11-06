@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProyectoDSMGen.Infraestructure"
+		                   namespace="ProyectoDSMGen.Infraestructure.EN.Flicks">
+		    
+		    
+			
+				<class name="ListaNH" table="Lista"> 
+				  	
+						<id name="Id" column="idLista" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Tipo" > 
+						<column name="tipo"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<bag name="Pelicula" table="[pelicula_lista]" inverse="true" >
+							<key>
+								
+									<column name="FK_idLista_idLista"/> 
+							</key>
+      						<many-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.PeliculaNH">
+									<column name="FK_idPelicula_idPelicula"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Usuario" table="[lista_usuario]"  >
+							<key>
+								
+									<column name="FK_idLista_idLista"/> 
+							</key>
+      						<many-to-many class="ProyectoDSMGen.Infraestructure.EN.Flicks.UsuarioNH">
+									<column name="FK_id_idUsuario"/> 
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ListaNHReadAllHQL">from ListaNH</query>
+		</hibernate-mapping>
+	
