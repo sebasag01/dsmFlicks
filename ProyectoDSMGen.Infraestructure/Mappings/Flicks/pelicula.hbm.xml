@@ -96,8 +96,8 @@
 		  
 		  <query name="PeliculaNHReadAllHQL">from PeliculaNH</query>
 		  <query name="PeliculaNHreadFilterGeneroHQL"><![CDATA[FROM PeliculaNH as p WHERE p.Genero =:p_genero]]></query>
-		  <query name="PeliculaNHreadFilterValoracionHQL"><![CDATA[FROM PeliculaNHas p WHERE p.ValoraciónMedia >= :p_valor]]></query>
-		  <query name="PeliculaNHreadFIlterAnyoHQL"><![CDATA[FROM PeliculaNH as p WHERE p.Año = :p_año]]></query>
+		  <query name="PeliculaNHreadFilterValoracionHQL"><![CDATA[FROM PeliculaNH as p WHERE p.ValoracionMedia >= :p_valor]]></query>
+		  <query name="PeliculaNHreadFIlterAnyoHQL"><![CDATA[FROM PeliculaNH as p WHERE p.Anyo = :p_anyo]]></query>
 		  <query name="PeliculaNHreadFilterTituloHQL"><![CDATA[FROM PeliculaNHas p WHERE lower(p.Título) like lower(:p_titulo)]]></query>
 		</hibernate-mapping>
 	

@@ -36,7 +36,7 @@ public void ContarResenyas (int p_oid)
                 // Write here your custom transaction ...
 
                 PeliculaEN peliculaEN = peliculaCEN.ReadID (p_oid);
-                if (peliculaEN == null) throw new ModelException ("Pel cula no encontrada: " + p_oid);
+                if (peliculaEN == null) throw new ModelException ("Pelicula no encontrada: " + p_oid);
 
                 int contador = 0;
                 if (peliculaEN.Resenya != null) {

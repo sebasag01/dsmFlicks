@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ProyectoDSMGen.ApplicationCore.EN.Flicks.PeliculaEN>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Título Original</th>
+                <th>Año</th>
+                <th>Duración</th>
+                <th>País</th>
+                <th>Director</th>
+                <th>Género</th>
+                <th>Sinopsis</th>
+                <th>Valoración</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Titulo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TituloOriginal)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Anyo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Duracion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Pais)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Director)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Genero)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Sinopsis)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ValoracionMedia)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -42,6 +42,8 @@ static void Main (string[] args)
                 System.Console.WriteLine ("-----------------------------------------");
                 System.Console.WriteLine ("The data has been inserted successfully!!");
                 System.Console.WriteLine ("-----------------------------------------");
+
+
                 System.Environment.Exit (0);
         }
         /*PROTECTED REGION END*/
